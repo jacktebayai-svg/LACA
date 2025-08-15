@@ -1,0 +1,32 @@
+{
+  "name": "aesthetics-platform-base",
+  "version": "1.0.0",
+  "description": "Shared foundation for aesthetics platform projects",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@9.6.0",
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=9.0.0"
+  },
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
+    "clean": "turbo clean && rm -rf node_modules",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "stack:up": "docker-compose up -d",
+    "stack:down": "docker-compose down",
+    "stack:reset": "docker-compose down -v && docker-compose up -d",
+    "db:generate": "pnpm --filter db generate",
+    "db:migrate": "pnpm --filter db migrate",
+    "db:seed": "pnpm --filter db seed",
+    "db:studio": "pnpm --filter db studio"
+  },
+  "devDependencies": {
+    "@turbo/gen": "^2.0.12",
+    "prettier": "^3.3.3",
+    "turbo": "^2.0.12",
+    "typescript": "^5.5.4"
+  }
+}

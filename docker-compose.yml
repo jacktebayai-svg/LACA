@@ -1,0 +1,42 @@
+services:
+  db:
+    image: postgres:16
+    container_name: irwell-db
+    environment:
+      POSTGRES_USER: irwell_user
+      POSTGRES_PASSWORD: irwell_secure_password_2024
+      POSTGRES_DB: irwell_hospitality
+    ports:
+      - "55433:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U irwell_user"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+  redis:
+    image: redis:7
+    container_name: mas-redis
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+  meili:
+    image: getmeili/meilisearch:v1.7
+    container_name: mas-meili
+    environment:
+      MEILI_NO_ANALYTICS: "true"
+    ports:
+      - "7700:7700"
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:7700/health"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+volumes:
+  db_data:
+

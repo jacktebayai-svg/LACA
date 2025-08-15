@@ -1,0 +1,50 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Next.js build output
+.apps/web/.next
+apps/web/.next
+apps/**/.next
+
+# Turbo cache
+.turbo/
+**/.turbo/
+
+# Coverage
+coverage
+
+# Local databases
+**/*.db
+packages/db/prisma/dev.db
+
+# Uploaded/generated documents or large binaries
+packages/documents/
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+/generated/prisma
